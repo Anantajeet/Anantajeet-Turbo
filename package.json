@@ -1,5 +1,5 @@
 {
-  "name": "MERN-Builder",
+  "name": "majirya-verse",
   "private": true,
   "scripts": {
     "build": "turbo build",
