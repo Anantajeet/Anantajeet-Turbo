@@ -1,10 +1,9 @@
 import express from "express";
+import consola from "consola";
 import 'dotenv/config'
 
 import connectDB from "./db/index.js";
-import consola from "consola";
-
-const app = express();
+import app from "./app.js";
 
 const port = process.env.PORT || 5000;
 
