@@ -1,12 +1,12 @@
 import { User } from "../models/user.model.js"
 import { ApiError } from "../utils/apiError.js";
 import { ApiResponse } from "../utils/apiResponse.js";
+import consola from "consola";
 
 export const signupUser = async (req, res) => {
 
-    const { username, email, password } = req.body;
-
     try {
+        const { username, email, password } = req.body;
 
         const existedUser = await User.findOne({ email })
 
@@ -20,13 +20,11 @@ export const signupUser = async (req, res) => {
             email
         })
 
-        await newuser.save();
-
         return res.status(200).json(
-            new ApiResponse(200, user, "User signup successfully")
+            new ApiResponse(200, newuser, "User signup successfully")
         )
     } catch (e) {
-        console.log(e);
+        consola.error(e)
         throw new ApiError(500, "Internal sever Errors")
     }
 }
