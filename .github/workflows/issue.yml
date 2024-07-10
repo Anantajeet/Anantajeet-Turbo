@@ -1,0 +1,16 @@
+name: Issue Workflow
+
+on:
+  issues:
+    types: ['opened']
+
+jobs:
+    Issue-Labeler:
+        name: Labelling Issues
+        runs-on: ubuntu-latest
+        steps:
+          - uses: Renato66/auto-label@v3.0.0
+            with:
+                repo-token: ${{ secrets.GITHUB_TOKEN }}
+                ignore-comments: true
+                default-labels: '["Status: Triage"]'
