@@ -2,15 +2,27 @@ name: Issue Labeller Workflow
 
 on:
   issues:
-    types: ['opened']
+    types: ["opened"]
 
 jobs:
-    Issue-Labeler:
-        name: Labelling Issues
-        runs-on: ubuntu-latest
-        steps:
-          - uses: Renato66/auto-label@v3.0.0
-            with:
-                repo-token: ${{ secrets.GITHUB_TOKEN }}
-                ignore-comments: true
-                default-labels: '["Status: Triage"]'
+  Issue-Labeler:
+    name: Labelling Issues
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Label Issues
+        id: labelIssues
+        uses: Renato66/auto-label@v3.0.0
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          ignore-comments: true
+          default-labels: '["Status: Triage"]'
+
+      - name: Check Labeling Result
+        run: |
+          if [ "${{ steps.labelIssues.outputs.success }}" != "true" ]; then
+            echo "Labeling failed."
+            # Add additional error handling steps here
+          fi
