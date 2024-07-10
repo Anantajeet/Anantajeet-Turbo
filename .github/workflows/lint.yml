@@ -1,12 +1,12 @@
-name: "PR Workflow"
+name: Lint Check Workflow
 
 on:
   pull_request:
     types: [opened, reopened, synchronize]
 
 jobs:
-  linting_and_type-checking:
-    name: Linting, Formatting and Type checking
+  lint-check:
+    name: Lint Checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
