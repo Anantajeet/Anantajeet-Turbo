@@ -1,4 +1,4 @@
-name: Issue Workflow
+name: Issue Labeller Workflow
 
 on:
   issues:
