@@ -8,7 +8,9 @@ export const signupUser = async (req, res) => {
     try {
         const { username, email, password } = req.body;
 
-        const existedUser = await User.findOne({ email })
+        const existedUser = await User.findOne({
+            $or: [{ email }, { username }]
+        })
 
         if (existedUser) {
             return res.status(400).json({ status: false, message: "User already existed" })
@@ -27,7 +29,7 @@ export const signupUser = async (req, res) => {
         return res.status(200).json({
             status: true,
             newUser,
-            message: "User already existed"
+            message: "User SignIn Successfully"
         })
 
     } catch (e) {
