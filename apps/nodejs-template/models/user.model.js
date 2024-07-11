@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
     {
@@ -15,18 +15,17 @@ const userSchema = new mongoose.Schema(
             required: [true, "Email is required"],
             trim: true,
             maxLength: [30, "Maximum length of username is 30 characters"],
-
         },
 
         password: {
             type: String,
             trim: true,
             required: [true, "Password is required"],
-        }
+        },
     },
     {
-        timestamps: true
-    }
-)
+        timestamps: true,
+    },
+);
 
 export const User = mongoose.model("users", userSchema);
