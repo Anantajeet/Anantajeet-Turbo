@@ -9,4 +9,4 @@ router.post("/signup", signupUser);
 // router.patch("/update", updateUser);
 // router.delete("/logout", deleteUser)
 
-export default router
+export default router;
